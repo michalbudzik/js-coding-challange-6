@@ -8,9 +8,9 @@
 function sortArray(arr) {
   try {
     return arr
-      // filter out all but numer or strings with numbers 
+      // filter out all but numbers or strings with numbers 
       .filter(item => (typeof item === "string" || typeof item === "number") && !isNaN(item))
-      // sort values from lowest to highest, when prioritize type number while comparing number and string number
+      // sort values from lowest to highest, prioritize type number while comparing number and string number
       .sort((a, b) => typeof a === 'string' && a == b ? 1 : a - b)
       // group repeating values into arrays and leave the rest as single items  
       .reduce((acc, item, index, array) => {
@@ -23,12 +23,13 @@ function sortArray(arr) {
             acc.push([item]);
           }
         } else {
-          // if previous value is the same push to accumulator's last item aray
+          // if previous value is the same push item to accumulator's last item array
           acc[acc.length - 1].push(item);
         }
         return acc;
       }, []);
   } catch (err) {
+    // Return error if input is not an array
     return 'Input must be an array. ' + err;
   }
 }
