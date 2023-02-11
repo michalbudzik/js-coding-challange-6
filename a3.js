@@ -18,15 +18,17 @@ function decToHex(dec) {
 function convertHexToRGB(input) {
     try {
         errMsg = 'Input is not a correct HEX color.';
-        if (typeof input !== 'string' || input.length < 6 || input.length > 7 || (input.length == 7 && input.substring(0,1) !== "#")) {
+        if (typeof input !== 'string' || input.length < 6 || input.length > 7 || (input.length === 7 && input.substring(0,1) !== "#")) {
             throw new Error(errMsg);
         } else {
-            if (input.length === 7) {
-                input = input.slice(1,input.length);
+            let preOutput = input;
+            let output;
+            if (input.length === 7 && input.substring(0,1) === "#") {
+                preOutput = input.slice(1,input.length);
             }
-            input = input.match(/.{2}/g)
-            let output = 'rgb(';
-            input.forEach(part => {
+            preOutput = preOutput.match(/.{2}/g)
+            output = 'rgb(';
+            preOutput.forEach(part => {
                 if (isNaN(hexToDec(part))) {
                     throw new Error(errMsg);
                 }
@@ -37,8 +39,8 @@ function convertHexToRGB(input) {
             return output;
         }
     } catch (err) {
-        console.log(err.message);
-        return null;
+        console.error(err.message);
+        return input;
     }
 }
 
