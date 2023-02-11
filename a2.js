@@ -7,8 +7,7 @@
 function findSumParts(arr, num) {
     // return error if arr is not an array or num is not a number
     if (!Array.isArray(arr) || typeof num !== 'number') {
-        err = new Error('First input must be an array, second a number.');
-        return err. name + ': ' + err.message
+        throw new Error('First input must be an array, second a number.');
     }
     try {
         return arr
