@@ -5,9 +5,6 @@
   Bonus: Make it so it organizes strings differently from number types. i.e. [1, "2", "3", 2] should return [[1,2], ["2", "3"]]
 */
 
-//const disArray = [1, 2, 4, 51, "51", 591, null, {name: 1}, ['x', 1], undefined, 392, 391, "aaa", 2, 5, 0, 10, 2, 1, 1, 1, "test", "20", "zzz", "bbb", 20];
-const disArray = null;
-
 function sortArray(arr) {
   try {
     return arr
@@ -36,4 +33,11 @@ function sortArray(arr) {
   }
 }
 
+const disArray = [1, 2, 4, 51, "51", 591, null, {name: 1}, ['x', 1], undefined, 392, 391, "aaa", 2, 5, 0, 10, 2, 1, 1, 1, "test", "20", "zzz", "bbb", 20];
+
+console.log(sortArray(null));
+console.log(sortArray(undefined));
+console.log(sortArray('test'));
+console.log(sortArray(0));
+console.log(sortArray({name: 'test'}));
 console.log(sortArray(disArray));
