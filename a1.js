@@ -13,7 +13,7 @@ function sortArray(arr) {
     return arr
       // filter out all but numer or strings with numbers 
       .filter(item => (typeof item === "string" || typeof item === "number") && !isNaN(item))
-      // sort values from lowest to highest
+      // sort values from lowest to highest, when prioritize type number while comparing number and string number
       .sort((a, b) => typeof a === 'string' && a == b ? 1 : a - b)
       // group repeating values into arrays and leave the rest as single items  
       .reduce((acc, item, index, array) => {
