@@ -44,9 +44,7 @@ function convertHexToRGB(input) {
     }
 }
 
-function vaidateColorRGB(input) {
-    
-}
+
 
 console.log(convertHexToRGB(null));
 console.log(convertHexToRGB(undefined));
