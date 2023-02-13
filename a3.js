@@ -95,9 +95,10 @@ function convertRGBToHex(input) {
     }
 }
 
-function switchHexRGB(input) {
+// 1st Version of the Function
+function switchHexRGB1(input) {
     // Try to Convert Input to RGB Color
-    let output = convertHexToRGB(input);  
+    let output = convertHexToRGB(input);
     if (input === output) {
         // If Unsuccessful Convert Input to HEX Color
         output = convertRGBToHex(input);
@@ -106,7 +107,7 @@ function switchHexRGB(input) {
             return false;
         } else {
             // If Successful Return HEX Color
-            return output;    
+            return output;
         }
     } else {
         // If Successful Return RGB Color
@@ -114,14 +115,32 @@ function switchHexRGB(input) {
     }
 }
 
+// 2st Version of the Function - compose like approach
+function switchHexRGB(input) {
+    // Loop through Functions
+    return [convertHexToRGB, convertRGBToHex].reduce((output, fn, index, array) => {
+        const newOutput = fn(output);
+        if (output !== newOutput) {
+            // If Value was Changed (Success) Clear Array with Functions to Break out of Reduce Loop
+            array.splice(0, array.length);
+        } else if (index === array.length - 1) {
+            // If Value wasn't Changed after Full Loop Return False
+            return false;
+        }
+        return newOutput;
+    }, input);
+}
+
+
+
 console.log(switchHexRGB(null));
 console.log(switchHexRGB(undefined));
 console.log(switchHexRGB(['1', 0]));
-console.log(switchHexRGB({name : 'test'}));
+console.log(switchHexRGB({ name: 'test' }));
 console.log(switchHexRGB('0ffaaff'));
 console.log(switchHexRGB('#ffaaffx'));
+console.log(switchHexRGB('rgb(sfsdfsdfs)'));
 console.log(switchHexRGB('#ffaaff'));
 console.log(switchHexRGB('aaaaff'));
-console.log(switchHexRGB('rgb(sfsdfsdfs)'));
 console.log(switchHexRGB('rgb(255, 255, 255)'));
 console.log(switchHexRGB('rgb(120,34,76)'));
