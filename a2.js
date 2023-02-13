@@ -5,11 +5,11 @@
 */
 
 function findSumParts(arr, num) {
-    // return error if arr is not an array or num is not a number
-    if (!Array.isArray(arr) || typeof num !== 'number') {
-        throw new Error('First input must be an array, second a number.');
-    }
     try {
+        // return error if arr is not an array or num is not a number
+        if (!Array.isArray(arr) || typeof num !== 'number') {
+            throw new Error('First input must be an array, second a number.');
+        }
         return arr
             // slice to make a copy and prevent modifying original input
             .slice(0)
@@ -36,3 +36,4 @@ console.log(findSumParts(0));
 console.log(findSumParts({ name: 'test' }));
 console.log(findSumParts([1, 2, 3, 4], [1, 2]));
 console.log(findSumParts([{ name: 1 }, ['test', 1], null, undefined, 2, 5, 7, 8, 1, 2, 2, 3, 3], 4));
+console.log(findSumParts([{ name: 1 }, ['test', 1], null, undefined, 1, 5, 7, 8, 1, 2, 2, 3, 3], 4));
